@@ -11,12 +11,12 @@ let getWeather = (latitude, longtitude, callback) => {
 			callback('Unable to fetch weather');
 		} else if (!error && response.statusCode === 200) {
 			callback(undefined, {
-				temperature: body.currently.temperature)
-		};
-	} else {
-		console.log('Unable to fetch weather');		
-	}
-});
+				temperature: body.currently.temperature
+			});
+		} else {
+			console.log('Unable to fetch weather');	
+		}	
+	});
 };
 
 module.exports.getWeather = getWeather;
