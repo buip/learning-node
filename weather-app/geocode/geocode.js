@@ -6,7 +6,6 @@ let geocodeAddress = (address, callback) => {
 		url: `http://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}`,
 		json: true
 	}, (error, response, body) => {
-
 		if(error) {
 			callback('error');
 		} else if (body.status === 'ZERO_RESULTS') {
