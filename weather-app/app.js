@@ -1,6 +1,8 @@
 const request = require('request');
 const yargs = require('yargs');
 
+const geocode = require('./geocode/geocode.js');
+
 const argv = yargs
 	.options({
 		a: {
@@ -15,10 +17,12 @@ const argv = yargs
 	.argv;
 
 const address = argv.a;
+geocode.geocodeAddress(address);
+
 const encodedAddress = encodeURIComponent(address)
 
 request({
-	url: `http://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}`,
+	url: `http://maps.googleapis.com/maps/api/geocode/js	on?address=${encodedAddress}`,
 	json: true
 }, (error, response, body) => {
 
