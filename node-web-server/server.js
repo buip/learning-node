@@ -5,7 +5,6 @@ const hbs = require('hbs');
 let app = express();
 hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
-app.use(express.static(__dirname + '/public'));
 
 app.use((req, res, next) => {
 	let now = new Date().toString();
@@ -25,6 +24,8 @@ app.use((req, res, next) => {
 		maintainanceMessage: 'The site is being updated'
 	});
 });
+
+app.use(express.static(__dirname + '/public'));
 
 hbs.registerHelper('getCurrentYear', () => new Date().getFullYear());
 
