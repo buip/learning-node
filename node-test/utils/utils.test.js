@@ -1,15 +1,42 @@
+const expect = require('expect');
 const utils = require('./utils');
 
 it('should add two number', () => {
   let result = utils.add(10, 10);
-  if (result !== 20) {
-    throw new Error(`Expected 20 but found ${result}`);
-  }
+  expect(result).toBe(20).toBeA('number');
+});
+
+it('should verify first and last name are set', () => {
+  let user = {
+    age: 25
+  };
+  let result = utils.setName({}, 'Phuong Bui');
+  let resultTwo = utils.setName(user, 'Phuong Bui');
+  let finalResult = result.firstName + ' ' + result.lastName;
+  expect(finalResult).toBe('Phuong Bui');
+  expect(user).toInclude({
+    firstName: 'Phuong',
+    lastName: 'Bui'
+  });
 });
 
 it('should square the number', () => {
   let result = utils.square(10);
-  if (result != 100) {
-    throw new Error(`Expected 100 but found ${result}`);
-  }
-})
+  expect(result).toBe(100).toBeA('number');
+});
+
+it('should expect some value', () => {
+  expect(12).toNotBe(13);
+  expect({
+    name: 'Phuong'
+  }).toEqual({
+    name: 'Phuong'
+  });
+  expect([1,2,3]).toInclude(2);
+  expect({
+    name: 'Phuong',
+    age: 20
+  }).toInclude({
+    age: 20
+  })
+});
