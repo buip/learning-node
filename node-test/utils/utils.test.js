@@ -20,6 +20,20 @@ it('should verify first and last name are set', () => {
   });
 });
 
+it('should async add two numbers', (done) => {
+  utils.asyncAdd(1, 2, (sum) => {
+    expect(sum).toBe(3).toBeA('number');
+    done();
+  });
+});
+
+it('should async square two number', (done) => {
+  utils.asyncSquare(10, (result) => {
+    expect(result).toBe(100).toBeA('number');
+    done();
+  });
+});
+
 it('should square the number', () => {
   let result = utils.square(10);
   expect(result).toBe(100).toBeA('number');
