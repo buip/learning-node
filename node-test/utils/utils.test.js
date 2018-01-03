@@ -1,9 +1,25 @@
 const expect = require('expect');
 const utils = require('./utils');
 
-it('should add two number', () => {
-  let result = utils.add(10, 10);
-  expect(result).toBe(20).toBeA('number');
+describe('Utils', () => {
+  describe('#async', () => {
+    it('should async add two numbers', (done) => {
+      utils.asyncAdd(1, 2, (sum) => {
+        expect(sum).toBe(3).toBeA('number');
+        done()
+      });
+    });
+    it('should async square two number', (done) => {
+      utils.asyncSquare(10, (result) => {
+        expect(result).toBe(100).toBeA('number');
+        done();
+      });
+    });
+  });
+  it('should add two number', () => {
+    let result = utils.add(10, 10);
+    expect(result).toBe(20).toBeA('number');
+  });
 });
 
 it('should verify first and last name are set', () => {
@@ -20,19 +36,6 @@ it('should verify first and last name are set', () => {
   });
 });
 
-it('should async add two numbers', (done) => {
-  utils.asyncAdd(1, 2, (sum) => {
-    expect(sum).toBe(3).toBeA('number');
-    done();
-  });
-});
-
-it('should async square two number', (done) => {
-  utils.asyncSquare(10, (result) => {
-    expect(result).toBe(100).toBeA('number');
-    done();
-  });
-});
 
 it('should square the number', () => {
   let result = utils.square(10);
