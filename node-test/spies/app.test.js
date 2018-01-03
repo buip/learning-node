@@ -7,7 +7,6 @@ describe('App', () => {
   let bd = {
     saveUser: expect.createSpy()
   }
-
   app.__set__('db', bd);
   it('should call the spy correctly', () => {
     let spy = expect.createSpy();
